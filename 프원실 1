@@ -1,0 +1,21 @@
+#include <stdio.h> 
+
+int main(void) {
+	int a, r, n;
+	scanf("%d %d %d", &a, &r, &n);
+	int sum = 0;
+
+
+	for (int i = 1; i <= n; i++) {
+		int ai = a;
+
+		for (int j = 0; j < i; j++) {
+			ai *= r;
+		}
+		sum += ai;
+		printf("%d\n", ai);
+
+	}
+	printf("%d", sum);
+
+	return 0;
