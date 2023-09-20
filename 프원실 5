@@ -8,7 +8,7 @@ int main() {
 	
 	if (direction==1){
 		for (int i=n;i>0;i--){
-			for (int j=i-1;j>0;j--){
+			for (int j=i-1;j>0;j--){//코드 최대한 간단하게 짜보기
 				printf(" ");
 			}
 			for (int k=1;k<=m;k++){
