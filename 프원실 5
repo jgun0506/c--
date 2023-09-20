@@ -1,0 +1,24 @@
+#include <stdio.h>
+int main() {
+	
+	int n, direction;
+	scanf("%d %d", &n, &direction);
+	
+	int m=1;
+	
+	if (direction==1){
+		for (int i=n;i>0;i--){
+			for (int j=i-1;j>0;j--){
+				printf(" ");
+			}
+			for (int k=1;k<=m;k++){
+				printf("*");
+			}
+			m++;
+			printf("\n");
+		}
+	}
+	
+	
+	return 0;
+}	
