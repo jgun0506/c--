@@ -2,20 +2,21 @@
 
 int main(void) {
 	int a, r, n;
+	int s, ai, i;//s는 항들의 합,ai는 i번째 항
+
 	scanf("%d %d %d", &a, &r, &n);
-	int sum = 0;
 
-
-	for (int i = 1; i <= n; i++) {
-		int ai = a;
-
-		for (int j = 0; j < i; j++) {
-			ai *= r;
-		}
-		sum += ai;
-		printf("%d\n", ai);
-
+	ai = a;	
+	s = a;
+	
+	printf("%d ", a);
+	for (i = 1;i<n;i++ ) {
+		ai=ai*r;
+		s+=ai;//합에 각항 더해주기
+		printf("%d ",ai);
 	}
-	printf("%d", sum);
-
+	
+	printf("= %d\n", s);
+	
 	return 0;
+}
