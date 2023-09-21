@@ -8,7 +8,7 @@ int main() {
 	
 	if (direction==1){
 		for (int i=n;i>0;i--){
-			for (int j=i-1;j>0;j--){//코드 최대한 간단하게 짜보기
+			for (int j=i-1;j>0;j--){
 				printf(" ");
 			}
 			for (int k=1;k<=m;k++){
@@ -18,7 +18,17 @@ int main() {
 			printf("\n");
 		}
 	}
-	
+	else if(direction==2){
+		for(int i=0;i<n;i++){
+			for(int j=0;j<i;j++){
+				printf(" ");
+			}
+			for(int k=n-i;k>0;k--){
+				printf("*");
+			}
+			printf("\n");
+		}
+	}
 	
 	return 0;
 }	
