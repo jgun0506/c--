@@ -5,27 +5,26 @@ int main() {
 	scanf("%d", &option);
 	
 	if(option==1){
-		for (int i=1;i<=3;i++){
-			for(int j=1;j<10;j++){
+		for(int i=1;i<=3;i++){
+			for(int j=1;j<=9;j++){
 				printf("%d * %d = %d\n",i,j,i*j);
 			}
 		}
 	}
-	else if (option==2){
-		for (int i=1;i<=3;i++){
+	else if(option==2){
+		for(int i=1;i<=3;i++){
 			for(int j=9;j>0;j--){
 				printf("%d * %d = %d\n",i,j,i*j);
 			}
 		}
 	}
-	else if (option==3){
-		for (int i=1;i<=3;i++){
-			for(int j=9;j>0;j--){
+	else if(option==3){
+		for(int i=1;i<=3;i++){
+			for(int j=1;j<=9;j=j+2)
 				printf("%d * %d = %d\n",i,j,i*j);
-			}
 		}
+		
 	}
-	
 	
 	return 0;
 }
