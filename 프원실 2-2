@@ -1,0 +1,23 @@
+#include <stdio.h> 
+
+
+int main(void) {
+	int a,b;
+	
+	scanf("%d",&a);
+	
+	if(a>=100){
+		b=(a%100)/10;
+		if(b%2==0){
+			printf("짝");
+		}
+		else
+			printf("홀");
+	}
+	else{
+		printf("fail");
+	}
+	
+	
+	return 0;
+}
