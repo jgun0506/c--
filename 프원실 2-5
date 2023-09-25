@@ -1,31 +1,31 @@
 #include <stdio.h>
 int main() {
 	
-	int n, direction;
-	scanf("%d %d", &n, &direction);
+	int n, option;
+	scanf("%d %d", &n, &option);
 	
-	if(n==1){
-		for(int i=0;i<direction;i++){
-			for(int j=direction-i;j>1;j--){
+	if(option==1){
+		for(int i=0;i<n;i++){
+			for(int j=n-1-i;j>0;j--){
 				printf(" ");
 			}
-			for(int j=0;j<i+1;j++){
+			for(int j=1+i;j>0;j--){
 				printf("*");
 			}
 			printf("\n");
 		}
 	}
-	else if(n==2){
-		for(int i=0;i<direction;i++){
-			for(int j=0;j<i;j++){
+	else if(option==2){
+		for(int i=0;i<n;i++){
+			for(int j=i;j>0;j--){
 				printf(" ");
 			}
-			for(int j=direction-i;j>0;j--){
+			for(int j=n-i;j>0;j--){
 				printf("*");
 			}
 			printf("\n");
 		}
 	}
 	
-	return 0;
+	
 }	
