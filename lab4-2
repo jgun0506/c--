@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+void print_binary(unsigned int n) {
+	int i=31;
+	char s[33]={'0',};
+	printf("%s",s);
+	while(n>0){
+		s[i]='0'+n%2;
+		n/=2;
+		i--;
+	}
+	s[33] = '\0'; 
+	printf("%s",s);
+
+}
+
+int main(void) {
+	unsigned int num;
+	
+	scanf("%d", &num);
+	print_binary(num);
+	
+	return 0;
