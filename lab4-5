@@ -1,0 +1,27 @@
+#include <stdio.h> 
+
+int is_palindromic_number(unsigned int n) {
+	int original=n;
+	int p;
+	for(int i=0;original>0;i++){
+		p=p*10+(original%10);
+		original/=10;
+	}
+	if(p==n)
+		return 1;
+	else
+		return 0;
+}
+
+int main(void) {
+	unsigned int num;
+	
+	scanf("%d",&num);
+	
+	if (is_palindromic_number(num))
+		printf("is a palindromic number\n");
+	else 
+		printf("is not a palindromic number\n");
+
+	return 0;
+}
