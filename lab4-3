@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+
+void print_ieee754(float num) {
+    unsigned int binary_representation;
+    // 이진 표현을 얻기 위해 memcpy 사용
+    memcpy(&binary_representation, &num, sizeof(float));
+
+    for (int i = 31; i >= 0; i--) {
+        printf("%d", (binary_representation >> i) & 1);
+    }
+    printf("%d",binary_representation);
+}
+
+int main() {
+    float num;
+
+    printf("Enter a float: ");
+    scanf("%f", &num);
+    print_ieee754(num);
+
+    return 0;
+}
