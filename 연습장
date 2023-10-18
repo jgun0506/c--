@@ -1,0 +1,91 @@
+#include <stdio.h>
+
+void print_ieee754(float num) {
+	int i;
+	float fr;
+	unsigned int temp=num;
+	char re[9];//정수부분 역방향
+	char e[9];//정수부분 정방향
+	char f[24];//소수부분
+	
+	if(num>0){
+		printf("0");
+		fr=num-temp;//소수부분
+	}
+	else{
+		printf("1");
+		fr=-num-temp;//소수부분
+		
+	}
+	for(i=0;i<8;i++){
+		if(temp%2==0){
+			re[i]='0';
+			temp/=2;
+		}
+		else{
+			re[i]='1';
+			temp/=2;
+		}
+	}
+	//정방향으로 돌리기
+	for(i=0;i<8;i++){
+		e[i]=re[7-i];
+	}
+	//정수부분 지수 구하기
+	int ex;
+	for(i=0;i<8;i++){
+		if(e[i]=='1'){
+			ex=i;
+			break;
+		}
+	}
+	ex=7-ex;
+	int len=ex;//소수부분구할때사용
+	ex+=127;
+	//지수부분에 대한 이진수 구하기
+	for(i=0;i<8;i++){
+		if(ex%2==0){
+			re[i]='0';
+			ex/=2;
+		}
+		else{
+			re[i]='1';
+			ex/=2;
+		}
+	}
+	for(i=0;i<8;i++){
+		e[i]=re[7-i];
+	}
+	printf("%s",e);
+	
+	
+	for(int i=0;i<len;i++){
+		e[]
+	}
+	
+	
+	for(i=0;i<23;i++){
+		fr*=2;
+		if(fr>=1){
+			f[i]='1';
+			fr-=1;
+		}
+		else{
+			f[i]='0';
+		}
+	}
+	
+	
+	
+	
+}
+
+int main() {
+    float num;
+
+    printf("Enter a floating-point number: ");
+    scanf("%f", &num);
+    print_ieee754(num);
+
+    return 0;
+}
