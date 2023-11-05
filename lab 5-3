@@ -30,7 +30,7 @@ int main(void) {
 		guessed_num = guess_number();
 		match_result = get_match_result(target_num, guessed_num);
 		receive_match_result(match_result, guessed_num);
-	} while (n_attempt <= ATTEMPT_LIMIT && match_result != 30);
+	} while (n_attempt < ATTEMPT_LIMIT && match_result != 30);
 
 	if (match_result == 30)
 		printf("Congratulation!!! You Win\n");
@@ -73,20 +73,25 @@ int generate_a_digit(void) {
 * @return : return an integer with 3 different digits in 0~9
 * @param	 : none
 */
-int generate_target_number(void){
-	int num=generate_a_digit();
-	int temp;
-	int divide=1;
+int generate_target_number(void){//여기가 애매한거임
+	int num=generate_a_digit();//첫 자리수로 지정
 	
-	do{
-		temp=generate_a_digit();
-		if(num%10 != temp && (num/divide)%(divide*10) != temp){
-			num=num*10+temp;
-			divide*=10;
-		}
-	}while(divide<=100);
-		
+	int a=generate_a_digit();
+	while(1){
+		if((num)%10 != a ){//1의자리숫자와 비교하여 두번쨰수 추가
+			num=num*10+a;
+			break;
+		}	
+	}
+	a=generate_a_digit();
+	while(1){
+		if((num)%10 != a && (num/10)%10 != a ){//1의자리숫자,2자리숫자 비교하여 세번쨰수 추가
+			num=num*10+a;
+			break;
+		}	
+	}
 	return num;
+	
 }
 
 int get_match_result(int target,int guessed){
