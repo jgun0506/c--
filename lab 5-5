@@ -1,0 +1,27 @@
+#include <stdio.h>
+#define MAX_NUMBER	10000
+
+int is_self(int n){//제너레이터일경우 1반환 self num일 경우 0반환
+	for(int i=1;i<=n;i++){
+		int temp_n=i;//자기자신의수
+		int temp=0; //자릿수의 합
+		while(temp_n>0){
+			temp+=temp_n%10;
+			temp_n/=10;
+		}
+		if(temp+i==n){
+			return 0;
+		}
+	}
+	return 1;
+}
+
+int main(void) {
+	
+	for(int i=1;i<=MAX_NUMBER;i++){
+		if(is_self(i)){
+			printf("%d, \n",i);
+		}
+	}
+	return 0;
+}
