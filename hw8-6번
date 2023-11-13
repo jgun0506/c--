@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_SIZE	1000
+#define END_MARK -1
+
+int get_len_max_min(int *pnums, int *pmax, int *pmin) {
+	int *pcur = pnums;
+  *pmax=*pcur;
+  	*pmin=*pcur;
+  
+  	while(*pcur !=END_MARK){
+  		if(*pcur>*pmax){
+  			*pmax=*pcur;
+  		}
+  		else if(*pcur<*pmin){
+  			*pmin=*pcur;
+  		}
+  		pcur++;//여기 중요
+  	}
+  	return pcur-pnums;// 여기 ㅈㄴ중요 배열간격을 len값으로 보자
+}
+int main(void) {
+	int nums[MAX_SIZE];
+	int max=0, min=0, len=0;
+	
+	generate_values(nums);
+	len = get_len_max_min(nums, &max, &min);
+
+	printf("Length(Nums) = %d, Max(nums)=%d, Min(nums)=%d\n", len, max, min);
+	return 0;
+}
