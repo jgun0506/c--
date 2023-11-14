@@ -5,25 +5,24 @@ char *mystrtok1(char *str, char delim) {
 	
 	if(str != NULL){
 		psave=str;	
-	}else if(psave==NULL){
+	}else if(psave==NULL){//이전 토큰도없고 새로운문자열주어지지않은 경우
 		return NULL;
 	}
 	
-	char* tokenstart=psave;
+	char* tokenstart=psave;//토큰바로 다음 주솟값 저장-> deilm나오기전까지 출력하기위함
 	
-	while(*psave != '\0' && *psave!=delim){
+	while(*psave != '\0' && *psave!=delim){//delim혹은 문자열 끝까지 가기
 		psave++;
 	}
 	
 	if(*psave == delim){
-		*psave='\0';
+		*psave='\0';//delim을 만나면 \0으로 변환시켜 문자열 출력끝값 정하기
 		psave++;
 	}else{
-		psave=NULL;
+		psave=NULL;//delim이아니라 \0을만나 문자열 끝까지갓다면 이렇게설정하여 끝날준비
 	}
-	
-	
-	return tokenstart;
+
+	return tokenstart;//토큰 시작점주솟값을 반환하면 printf("%s")로할경우 \0전까지 출력될예정
 }
 
 int main(void) {
