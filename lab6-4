@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <string.h>
+
+int isln(char *str,char* delim){//delim str 포함여부
+	while(*delim){
+		if(*(delim)==*str){
+			return 1;
+		}
+		delim++;
+	}
+	return 0;
+}
+
+char* mystrtok1(char* str, char *delim) {
+	static char* psave = 0;
+	
+	if (str != 0) {//str이 null포인터 아닐경우
+		psave = str;
+	}
+	else if (psave==NULL) {
+		return NULL;
+	}
+
+	char* tokenstart = psave;
+
+	while (*psave != '\0' && !isln(psave,delim)) {//
+		psave++;
+	}
+	
+	if (*psave != '\0'){//만약 delim이 있다면 \0으로 대채후 
+		*psave = '\0';
+		psave++;
+	}
+	else {
+		psave = NULL;//나중에 null포인터
+	}
+	
+	return tokenstart;//시작 토큰 리턴
+}
+
+int main(void) {
+	char pstr[256] = { ",123,hello,34 56, Good.,Bye" };
+	char* ptoken;
+	char delim[] = ",";
+	int test = 0;
+
+	ptoken = mystrtok1(pstr, delim);
+
+	while (ptoken) {
+		printf("%s\n", ptoken);
+		ptoken = mystrtok1(0, delim);
+	}
+
+	return 0;
+}
