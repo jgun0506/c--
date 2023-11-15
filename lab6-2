@@ -1,27 +1,32 @@
 #include <stdio.h>
 #include <string.h>
 
-void swap(char *x, char *y) {
-    char temp = *x;
-    *x = *y;
-    *y = temp;
+void swap(char* x,char* y){
+	char temp=*x;
+	*x=*y;
+	*y=temp;	
 }
 
-void print_all_permutations(char *str,int start) {
-	if(start == strlen(str)-1){
+void print_all_permutation(char *str,int start) {
+	if(start==strlen(str)-1){
 		puts(str);
 		return;
 	}
+	
 	for(int i=start;i<strlen(str);i++){
-		swap((str+start), (str + i));//abc를 bac로 하는작업
-		print_all_permutations(str, start + 1);
-		swap((str+start), (str + i));//원상태복구
+		swap((str+start),(str+i));
+		print_all_permutation(str,start+1);
+		swap((str+i),(str+start));
 	}
+	
+	return;
 }
-
+void print_all_permutations(char *str) {
+	print_all_permutation(str,0);
+}
 int main(void) { 
 	char str[256] = "ABC";
 
-	print_all_permutations(str,0);
+	print_all_permutations(str);
 	return 0; 
 } 
