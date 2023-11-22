@@ -2,13 +2,10 @@
 #include <string.h>
 
 int isln(char *str,char* delim){//delim str 포함여부
-	while(*delim){
-		if(*(delim)==*str){
-			return 1;
-		}
+	while(*delim && *str != *delim){
 		delim++;
 	}
-	return 0;
+	return *delim;
 }
 
 char* mystrtok1(char* str, char *delim) {
@@ -27,7 +24,7 @@ char* mystrtok1(char* str, char *delim) {
 		psave++;
 	}
 	
-	if (*psave != '\0'){//만약 delim이 있다면 \0으로 대채후 
+	if (*psave != '\0'){//만약 delim이 있다면 \0으로 대체후 
 		*psave = '\0';
 		psave++;
 	}
