@@ -2,7 +2,7 @@
 
 char *mystrtok1(char *str, char delim) {
 	static char *psave = 0;
-	
+	//연속적으로 delim나오는경우 생각하는코드짜기
 	if(str != NULL){
 		psave=str;	
 	}else if(psave==NULL){//이전 토큰도없고 새로운문자열주어지지않은 경우
