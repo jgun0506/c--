@@ -1,68 +1,72 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
 
-int text_size(char* txt) {//txt의 배열크기구하기
-	int size = 0;
-	while (*(txt + size) != '\0')
-		size++;
-	return size;
-}
 
-int count_words(char* txt) {
-	int size = text_size(txt);
-	char* txt1 = malloc(sizeof(char) * size);
-	strcpy(txt1, txt);
-
-	char* ptr = strtok(txt1, " \n\r");
+int count_words(char *txt) {
+	int count=0;
 	
-	int count = 0;
-	while (ptr != NULL) {
-		count++;
-		ptr = strtok(NULL, " \n\r");
+	char* str=strtok(txt," \n\r");
+	
+	while(str){
+		count+=1;
+		str=strtok(NULL," \n\r");
 	}
-
+	free(txt);
 	return count;
 }
 
 int main(void) {
-	char* filename = "ai.txt";
-	FILE* fd = NULL;
+	char * filename = "data/ai.txt";
+	FILE *fd = NULL;
 	int test_case = 1;
-
+	
 	scanf("%d", &test_case);
-
+	
 	switch (test_case) {
-	case 2:
-		filename = "internet.txt";
-		break;
-	case 3:
-		filename = "ce.txt";
-		break;
-	default:
-		break;
+		case 2:
+			filename = "data/internet.txt";
+			break;
+		case 3:
+			filename = "data/ce.txt";
+			break;
+		default :
+			break;
 	}
-
+	
 	fd = fopen(filename, "rt");
 	if (fd) {
 		int nsize;
-		char* buffer = NULL;
+		char * buffer = NULL;
 
-		fseek(fd, 0, SEEK_END);//파일포인터를 끝까지 이동시킴
-		nsize = ftell(fd);//파인포인터의 현재위치
-		rewind(fd);
-
-		buffer = (char*)malloc(nsize + 1);
+		fseek(fd, 0, SEEK_END);
+		nsize = ftell(fd);
+		rewind(fd);	
+			
+		buffer = (char *)malloc(nsize+1);
 		assert(buffer);
-
+		
 		nsize = fread(buffer, sizeof(char), nsize, fd);
 		buffer[nsize] = '\0';
-		printf("# of words in %s is %d\n", filename, count_words(buffer));
+		printf("# of words in %s is %d\n",filename,count_words(buffer));
 		fclose(fd);
-	}
+	} 
 	else puts("File Open Error\n");
-
-	return 0;
+	
+	return 0;	
 }
+/*
+// ai.txt
+Artificial intelligence (AI), is intelligence demonstrated by machines, unlike the natural intelligence displayed by humans and animals. 
+
+// internet.txt
+The Internet is the global system of interconnected computer networks that uses the Internet protocol suite to communicate between networks and devices. 
+It is a network of networks of local to global scope, linked by a broad array of electronic, wireless, and optical networking technologies.
+*/
+
+/*
+// ce.txt
+Computer engineering is a branch of engineering that integrates several fields of computer science and electronic engineering required to develop computer hardware and software. Computer engineers usually have training in electronic engineering (or electrical engineering), software design, and hardware-software integration instead of only software engineering or electronic engineering. Computer engineers are involved in many hardware and software aspects of computing, from the design of individual microcontrollers, microprocessors, personal computers, and supercomputers, to circuit design. This field of engineering not only focuses on how computer systems themselves work but also how they integrate into the larger picture.
+Usual tasks involving computer engineers include writing software and firmware for embedded microcontrollers, designing VLSI chips, designing analog sensors, designing mixed signal circuit boards, and designing operating systems. Computer engineers are also suited for robotics research, which relies heavily on using digital systems to control and monitor electrical systems like motors, communications, and sensors.
+*/
